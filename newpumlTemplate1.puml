@@ -1,0 +1,9 @@
+@startuml
+BDException
+PersonaException
+PersistenciaPersona
+Conexion
+Persona
+FachadaLogica
+Ingreso
+@enduml
