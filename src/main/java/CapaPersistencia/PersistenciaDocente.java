@@ -20,7 +20,7 @@ import java.sql.SQLException;
  */
 public class PersistenciaDocente {
     private static final String SQL_GUARDAR_INASISTENCIA=("INSERT INTO miguel.inasistenciadocente(ci,fecha_in,fecha_fin,motivo,turno,grupo) VALUES (?,?,?,?,?,?)");
-    private static final String SQL_CONSULTA_PERSONA = ("SELECT * FROM proyecto.persona where Ci=?");
+    private static final String SQL_CONSULTA_PERSONA = ("SELECT * FROM miguel.inasistenciadocente where ci=?");
     private static final String SQL_ELIMINAR_INASISTENCIA = ("DELETE FROM inasistenciadocente WHERE Ci= ?");
      private static final String SQL_REGISTRAR = ("INSERT INTO miguel.usuario(nombre_usuario, contrasenia) VALUES (?, ?)");
     private static final String SQL_INICIAR_SESION = ("SELECT * FROM miguel.usuario WHERE nombre_usuario = ? AND contrasenia = ?");
@@ -130,40 +130,44 @@ public class PersistenciaDocente {
 
         }
     }
-//    public Persona busquedaPorCi(String ci) throws Exception, BDException, SQLException { 
-//        Persona perso = new Persona();
-//
-//        try {
-//            Connection con;
-//            con = cone.getConnection();
-//            ps = (PreparedStatement) con.prepareStatement(SQL_CONSULTA_PERSONA);
-//            ps.setString(1, ci);
-//            rs = ps.executeQuery();// este método executeQuery se utiliza,cuando en una consulta SQL,
-//            //nos devuelve un objeto,en este caso un personaje.
-//            if (rs.next()) {
-//                String Ci = rs.getString("Ci");
-//                String nombre = rs.getString("Nombre");
-//                String apellido = rs.getString("Apellido");
-//                String tareas = rs.getString("Tareas");
-//                perso.setCi(Ci);
-//                perso.setNombre(nombre);
-//                perso.setApellido(apellido);
-//                perso.setTareas(tareas);
-//            } else {
-//                throw new PersonaException("La persona no esta ingresada, por favor ingreselo");
-//            }//Las conexiones a la base de datos son recursos limitados y valiosos. Si no se cierran 
-//            //adecuadamente, 
-////pueden acumularse y agotar los recursos disponibles en el servidor de la base de datos.
-////Esto es especialmente crítico en entornos con un gran número de solicitudes, como aplicaciones web.
-////Por tema de optimización de recursos es que se cierran.con.close();
-//            con.close();
-//        } catch (Exception e) {
-//            System.out.println(e);
-//            throw new PersonaException("No pude obtener el personaje");
-//        }
-//
-//        return perso;
-//    } 
+    public InasistenciaDocente busquedaPorCi(String ci) throws Exception, BDException, SQLException { 
+       InasistenciaDocente perso = new InasistenciaDocente();
+
+        try {
+            Connection con;
+            con = cone.getConnection();
+            ps = (PreparedStatement) con.prepareStatement(SQL_CONSULTA_PERSONA);
+            ps.setString(1, ci);
+            rs = ps.executeQuery();// este método executeQuery se utiliza,cuando en una consulta SQL,
+            //nos devuelve un objeto,en este caso un personaje.
+            if (rs.next()) {
+                String Ci = rs.getString("Ci");
+                String Fecha_in = rs.getString("Fecha Inicio");
+                String Fecha_Fin = rs.getString("Fecha Fin");
+                String Motivo = rs.getString("Motivo");
+                String Turno = rs.getString("Turno");
+                String Grupo = rs.getString("Grupo");
+                perso.setCi(Ci);
+                perso.setFecha_in(Fecha_in);
+                perso.setFecha_fin(Fecha_Fin);
+                perso.setMotivo(Motivo);
+                perso.setTurno(Turno);
+                perso.setGrupo(Grupo);
+            } else {
+                throw new PersonaException("La persona no esta ingresada, por favor ingreselo");
+            }//Las conexiones a la base de datos son recursos limitados y valiosos. Si no se cierran 
+            //adecuadamente, 
+//pueden acumularse y agotar los recursos disponibles en el servidor de la base de datos.
+//Esto es especialmente crítico en entornos con un gran número de solicitudes, como aplicaciones web.
+//Por tema de optimización de recursos es que se cierran.con.close();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new PersonaException("No pude obtener el personaje");
+        }
+
+        return perso;
+    } 
 public void eliminarInasistencia(String ci) throws PersonaException, Exception{
 
         try {

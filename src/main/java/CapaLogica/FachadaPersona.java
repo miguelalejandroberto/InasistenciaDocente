@@ -24,13 +24,13 @@ public class FachadaPersona {
          pers.guardarInasistecia(doc);
       
     }
-//    public  Persona busquedaPorCi(String ci) throws PersonaException,Exception {
-//        Persona per = new Persona();
-//        PersistenciaDocente pers = new PersistenciaDocente();
-//        per = pers.busquedaPorCi(ci);
-//        return per;
-//    }
-//        
+    public  InasistenciaDocente busquedaPorCi(String ci) throws PersonaException,Exception {
+        InasistenciaDocente per = new InasistenciaDocente();
+        PersistenciaDocente pers = new PersistenciaDocente();
+        per = pers.busquedaPorCi(ci);
+        return per;
+    }
+        
    public void eliminarIansistencia(String ci) throws PersonaException, Exception {
       PersistenciaDocente pers = new PersistenciaDocente();
         pers.eliminarInasistencia(ci);

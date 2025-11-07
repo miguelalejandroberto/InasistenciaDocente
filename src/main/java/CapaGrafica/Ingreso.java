@@ -275,50 +275,50 @@ public class Ingreso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-////                String ci = txtCI.getText().trim();
-////    if (ci.isEmpty()) {
-////        JOptionPane.showMessageDialog(this, "Ingrese una CI.");
-////        return;
-////    }
-////
-////    try {
-////        // Llama a tu fachada: public Persona busquedaPorCi(String ci)
-////        InasistenciaDocente p = fachadaper.busquedaPorCi(ci);
-////
-////        // Rellena campos 
-////        txtFechaInicio.setText(p.getFecha_in());
-////        txtFechaFin.setText(p.getFecha_fin());
-////        txtMotivo.setText(p.getMotivo());
-////        txtTurno.setText(p.getTurno());
-////        txtGrupo.setText(p.getGrupo());
-////
-////        // Muestra en la tabla
-////        modeloTabla.setRowCount(0);
-////        modeloTabla.addRow(new Object[]{ p.getCi(), p.getCi(), p.getFecha_in(),p.getFecha_fin(),p.getMotivo(),p.getTurno(),p.getGrupo()  });
-////
-////    } catch (PersonaException pe) {
-////        // NO ENCONTRADA u otro error de dominio
-////        limpiarCamposYTabla();
-////        JOptionPane.showMessageDialog(this, pe.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
-////
-////    } catch (SQLException se) {
-////        // Error técnico de BD
-////        limpiarCamposYTabla();
-////        JOptionPane.showMessageDialog(this, "Error de base de datos. Revise la conexión o los permisos.",
-////                "Error", JOptionPane.ERROR_MESSAGE);
-////        Logger.getLogger(getClass().getName()).log(Level.SEVERE, "SQLException en busquedaPorCi", se);
-////
-////    } catch (Exception ex) {
-////        limpiarCamposYTabla();
-////        JOptionPane.showMessageDialog(this, "Ocurrió un error inesperado.",
-////                "Error", JOptionPane.ERROR_MESSAGE);
-////        Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Error general en busquedaPorCi", ex);
-////    }
-////
-//////Acá vamos capturando posibles excepciones por capas,primero la capa de más de arriba la clase del perosnaje
-//////Luego vamos a la capa de manejos de excepciones,en este caso de la base de datos,donde se encuentra la 
-//////conexion.Y por último chequeamos en las clases propias que ofrece java,al estar trabajando con los 
-//////servidores de MySQL.
+                String ci = txtCI.getText().trim();
+    if (ci.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese una CI.");
+        return;
+    }
+
+    try {
+        // Llama a tu fachada: public Persona busquedaPorCi(String ci)
+        InasistenciaDocente p = fachadaper.busquedaPorCi(ci);
+
+        // Rellena campos 
+        txtFechaInicio.setText(p.getFecha_in());
+        txtFechaFin.setText(p.getFecha_fin());
+        txtMotivo.setText(p.getMotivo());
+        txtTurno.setText(p.getTurno());
+        txtGrupo.setText(p.getGrupo());
+
+        // Muestra en la tabla
+        modeloTabla.setRowCount(0);
+        modeloTabla.addRow(new Object[]{ p.getCi(), p.getCi(), p.getFecha_in(),p.getFecha_fin(),p.getMotivo(),p.getTurno(),p.getGrupo()  });
+
+    } catch (PersonaException pe) {
+        // NO ENCONTRADA u otro error de dominio
+        limpiarCamposYTabla();
+        JOptionPane.showMessageDialog(this, pe.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
+
+    } catch (SQLException se) {
+        // Error técnico de BD
+        limpiarCamposYTabla();
+        JOptionPane.showMessageDialog(this, "Error de base de datos. Revise la conexión o los permisos.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+        Logger.getLogger(getClass().getName()).log(Level.SEVERE, "SQLException en busquedaPorCi", se);
+
+    } catch (Exception ex) {
+        limpiarCamposYTabla();
+        JOptionPane.showMessageDialog(this, "Ocurrió un error inesperado.",
+                "Error", JOptionPane.ERROR_MESSAGE);
+        Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Error general en busquedaPorCi", ex);
+    }
+
+//Acá vamos capturando posibles excepciones por capas,primero la capa de más de arriba la clase del perosnaje
+//Luego vamos a la capa de manejos de excepciones,en este caso de la base de datos,donde se encuentra la 
+//conexion.Y por último chequeamos en las clases propias que ofrece java,al estar trabajando con los 
+//servidores de MySQL.
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
